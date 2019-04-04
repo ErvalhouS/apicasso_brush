@@ -9,23 +9,14 @@ Gem::Specification.new do |spec|
   spec.version     = ApicassoBrush::VERSION
   spec.authors     = ["Fernando Bellincanta"]
   spec.email       = ["ervalhous@hotmail.com"]
-  spec.homepage    = "TODO"
-  spec.summary     = "TODO: Summary of ApicassoBrush."
-  spec.description = "TODO: Description of ApicassoBrush."
+  spec.homepage    = "https://github.com/ErvalhouS/apicasso_brush"
+  spec.summary     = "APIcasso Brush is a client to consume data from microservices built upon APIcasso. It makes PORO classes supercharged by injecting Rails-like behavior through the methods:"
+  spec.description = "Instead of translating method calls into ORM, APIcasso Brush retrieves it's data from your configured service. This makes it possible to make a convergent application, that gets data from multiple API sources."
   spec.license     = "MIT"
-
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  spec.add_dependency "rails", "~> 5.2.2"
+  spec.add_dependency "rails", "> 5"
 
   spec.add_development_dependency "sqlite3"
 end
