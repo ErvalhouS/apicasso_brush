@@ -134,7 +134,7 @@ module Apicasso
 
     # Finds a object based on attributes conditions
     def self.find_by(opts = {})
-      where(opts).to_h[:entries].try(:[], 0)
+      where(opts).try(:[], 0)
     end
 
     # Finds a object based on attributes conditions,
