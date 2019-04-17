@@ -113,8 +113,8 @@ module Apicasso
 
         brush_collection(JSON.parse(retrieve(http, post_request(url, opts)).read_body))
       else
-        http = Net::HTTP.new(url.host, url.port)
         url = URI.parse(resource_url.to_s)
+        http = Net::HTTP.new(url.host, url.port)
 
         new(nil, JSON.parse(retrieve(http, post_request(url, opts)).read_body))
       end
@@ -134,7 +134,7 @@ module Apicasso
 
     # Finds a object based on attributes conditions
     def self.find_by(opts = {})
-      where(opts)[:entries][0]
+      where(opts).to_h[:entries].try(:[], 0)
     end
 
     # Finds a object based on attributes conditions,
@@ -240,7 +240,7 @@ module Apicasso
         request = Net::HTTP::Patch.new(url)
         request['Authorization'] = "Token token=#{apicasso_token}"
         request['Content-Type'] = 'application/json'
-        request.body = { name.underscore => body }.to_json
+        request.body = { resource_url.split('/').last.singularize => body }.to_json
         request
       end
 
@@ -248,7 +248,7 @@ module Apicasso
         request = Net::HTTP::Post.new(url)
         request['Authorization'] = "Token token=#{apicasso_token}"
         request['Content-Type'] = 'application/json'
-        request.body = { name.underscore => body }.to_json
+        request.body = { resource_url.split('/').last.singularize => body }.to_json
         request
       end
 
