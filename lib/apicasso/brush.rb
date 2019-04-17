@@ -76,8 +76,8 @@ module Apicasso
     # Updates current object to APIcasso
     def update(opts = {})
       @object.merge(opts)
-      @object = save_object(URI.parse(getter_url)) if @object.is_a? Hash
-      @id = @object[:id]
+
+      save
     end
 
     # Create objects, either using batch or individual request.
